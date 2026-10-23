@@ -35,7 +35,7 @@ app.get('/login', (req, res) => {
 app.post('/login', (req, res) => {
   const { email, senha } = req.body;
   // Provisório, sem banco: usuário fixo. Depois vira consulta ao MySQL.
-  if (email === "sla@ifrn.edu.br" && senha === "Senha123") {
+  if (email === process.env.LOGIN_EMAIL && senha === process.env.LOGIN_SENHA) {
     req.session.usuario = { email };
     return res.redirect('/home');
   }
